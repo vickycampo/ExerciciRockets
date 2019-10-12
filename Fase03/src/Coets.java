@@ -65,7 +65,7 @@ public class Coets {
         while (iterator.hasNext())
         {
             propulsor = (Propulsor) iterator.next();
-            System.out.print(propulsor.getPotencia());
+            System.out.print(propulsor.getPotenciaMaxima());
 
             if ( iterator.hasNext() )
             {
