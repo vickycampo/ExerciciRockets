@@ -1,11 +1,17 @@
-public class Fase01 {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Fase02 {
     public static void main (String[] args)
     {
         /* Creamos dos cohetes */
 
         String identificador1 = "32WESSDS";
-        int propulsors1 = 3;
+        List<Integer> propulsors1 = new ArrayList<>();
         try {
+            propulsors1.add(10);
+            propulsors1.add(30);
+            propulsors1.add(80);
             Coets cohete1 = new Coets( identificador1 , propulsors1 );
             cohete1.printInfo();
         } catch (Exception e) {
@@ -13,8 +19,15 @@ public class Fase01 {
         }
 
         String identificador2 = "LDSFJA32";
-        int propulsors2 = 6;
+        List<Integer> propulsors2 = new ArrayList<>();
         try {
+            propulsors2.add(30);
+            propulsors2.add(40);
+            propulsors2.add(50);
+            propulsors2.add(50);
+            propulsors2.add(30);
+            propulsors2.add(10);
+
             Coets cohete2 = new Coets( identificador2 , propulsors2 );
             cohete2.printInfo();
         } catch (Exception e) {
