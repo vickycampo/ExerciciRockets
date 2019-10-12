@@ -25,20 +25,22 @@ public class Propulsor {
         return this.potenciaActual;
     }
 
-    public void acelerar ()
+    public int acelerar ( int factorAcelarcion )
     {
         if ( potenciaActual + factorAcelarcion <= potenciaMaxima)
         {
             //como la potencia mas el incremento de acelarción es menor o igual que la potencia máxima aún podemos acelerar.
             potenciaActual += factorAcelarcion;
         }
+        return potenciaActual;
     }
-    public void frenar ()
+    public int frenar (  int factorAcelarcion  )
     {
         if ( potenciaActual - factorAcelarcion >= 0)
         {
             //No generaremos un una potencia negativa
             potenciaActual -= factorAcelarcion;
         }
+        return potenciaActual;
     }
 }

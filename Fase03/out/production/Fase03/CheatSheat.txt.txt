@@ -1,5 +1,0 @@
-Clone - git clone url
-Check status - git status
-Add all files - git add -all
-Commit with message - git commit -m "Starting Fase03"
-Push - git push -u origin master

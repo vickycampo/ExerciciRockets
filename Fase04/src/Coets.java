@@ -9,7 +9,7 @@ public class Coets {
 
     private String identificador;
     private ArrayList<Propulsor> propulsores = new ArrayList<>();
-    private int Speed = 0;
+    private double Speed = 0;
 
     public Coets ( String indetificador , List<Integer> potencias) throws Exception {
         this.setIdentificador( indetificador);
@@ -74,8 +74,8 @@ public class Coets {
         }
         return potenciaMax;
     }
-    public int calculateSpeed ()
+    public int acel ()
     {
-        int Speed
     }
+
 }

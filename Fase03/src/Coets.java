@@ -9,6 +9,7 @@ public class Coets {
 
     private String identificador;
     private ArrayList<Propulsor> propulsores = new ArrayList<>();
+    private int factorAcelarcion = 10;
 
     public Coets ( String indetificador , List<Integer> potencias) throws Exception {
         this.setIdentificador( indetificador);
@@ -78,4 +79,6 @@ public class Coets {
         }
 
     }
+
+
 }
