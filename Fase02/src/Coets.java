@@ -12,9 +12,11 @@ public class Coets {
 
     public Coets ( String indetificador , List<Integer> potencias) throws Exception {
         this.setIdentificador( indetificador);
+        int key = 0;
         for (Integer i: potencias)
         {
-            this.setPropulsores( i );
+            this.setPropulsores( key ,  i );
+            key++;
         }
 
     }
@@ -45,11 +47,11 @@ public class Coets {
         return propulsores;
     }
 
-    public void setPropulsores(int potencia) throws Exception {
+    public void setPropulsores(int key , int potencia) throws Exception {
         if ( potencia > 0 )
         {
             Propulsor propulsor = new Propulsor(potencia);
-            this.propulsores.add( propulsor );
+            this.propulsores.add( key , propulsor );
         }
         else
             throw (new Exception("La potencia de los propulsores debe ser mayor que 0"));
