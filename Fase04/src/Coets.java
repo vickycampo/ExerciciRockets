@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.regex.Matcher;
@@ -9,7 +8,8 @@ public class Coets {
 
     private String identificador;
     private ArrayList<Propulsor> propulsores = new ArrayList<>();
-    private double Speed = 0;
+    private int potenciaTotal = 0;
+    private double speed = 0;
 
     public Coets ( String indetificador , List<Integer> potencias) throws Exception {
         this.setIdentificador( indetificador);
@@ -60,10 +60,25 @@ public class Coets {
     }
     public void printInfo ()
     {
-        System.out.println( identificador + ": ");
+        System.out.println("Output:");
+        System.out.print( identificador + ": ");
         ListIterator iterator = propulsores.listIterator();
-        System.out.println("Número de propulsores: " + propulsores.size());
-        System.out.println("Potencia máxima: " + calculatePotenciaMaxima());
+        Propulsor propulsor;
+        while (iterator.hasNext())
+        {
+            propulsor = (Propulsor) iterator.next();
+            System.out.print(propulsor.getPotenciaMaxima());
+
+            if ( iterator.hasNext() )
+            {
+                System.out.print(", ");
+            }
+            else
+            {
+                System.out.println("");
+            }
+        }
+        System.out.println(" ");
     }
     public int calculatePotenciaMaxima ()
     {
@@ -74,8 +89,44 @@ public class Coets {
         }
         return potenciaMax;
     }
-    public int acel ()
+    public int acelar (  int acelerationFactor ) throws Exception
     {
-    }
+        if ( acelerationFactor < 0)
+        {
+            throw (new Exception("Si usa una acelación negativa le recomiendo usar la funcion de frenado."));
+        }
+        else
+        {
+            potenciaTotal = 0;
+            for ( Propulsor propulsor : propulsores )
+            {
+                potenciaTotal += propulsor.acelerar( acelerationFactor );
+            }
+            return potenciaTotal;
+        }
 
+    }
+    public int frenar (  int acelerationFactor )  throws Exception
+    {
+        if ( acelerationFactor < 0)
+        {
+            throw (new Exception("Si usa una acelación negativa le recomiendo usar la funcion de acelerado."));
+        }
+        else
+        {
+            potenciaTotal = 0;
+            for ( Propulsor propulsor : propulsores )
+            {
+                potenciaTotal = propulsor.frenar( acelerationFactor );
+            }
+            return potenciaTotal;
+        }
+
+    }
+    public double calculateSpeed ()
+    {
+        //calculamos la velocidad
+        speed = speed + 100*Math.sqrt(potenciaTotal);
+        return speed;
+    }
 }

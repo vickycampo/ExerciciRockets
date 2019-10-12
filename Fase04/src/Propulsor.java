@@ -2,6 +2,7 @@ public class Propulsor {
     private int potenciaMaxima;
     private int potenciaActual = 0;
     private int factorAcelarcion = 10;
+
     public Propulsor ( int potencia) throws Exception
     {
         this.setPotenciaMaxima( potencia );
@@ -43,4 +44,5 @@ public class Propulsor {
         }
         return potenciaActual;
     }
+    
 }
