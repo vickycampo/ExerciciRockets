@@ -9,6 +9,7 @@ public class Coets {
 
     private String identificador;
     private ArrayList<Propulsor> propulsores = new ArrayList<>();
+    private int Speed = 0;
 
     public Coets ( String indetificador , List<Integer> potencias) throws Exception {
         this.setIdentificador( indetificador);
@@ -59,23 +60,22 @@ public class Coets {
     }
     public void printInfo ()
     {
-        System.out.print( identificador + ": ");
+        System.out.println( identificador + ": ");
         ListIterator iterator = propulsores.listIterator();
-        Propulsor propulsor;
-        while (iterator.hasNext())
+        System.out.println("Número de propulsores: " + propulsores.size());
+        System.out.println("Potencia máxima: " + calculatePotenciaMaxima());
+    }
+    public int calculatePotenciaMaxima ()
+    {
+        int potenciaMax = 0;
+        for ( Propulsor propulsor : propulsores)
         {
-            propulsor = (Propulsor) iterator.next();
-            System.out.print(propulsor.getPotenciaMaxima());
-
-            if ( iterator.hasNext() )
-            {
-                System.out.print(", ");
-            }
-            else
-            {
-                System.out.println("");
-            }
+            potenciaMax += propulsor.getPotenciaMaxima();
         }
-
+        return potenciaMax;
+    }
+    public int calculateSpeed ()
+    {
+        int Speed
     }
 }
