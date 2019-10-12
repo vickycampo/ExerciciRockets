@@ -1,6 +1,6 @@
-public class Propulsores {
+public class Propulsor {
     private int potencia;
-    public Propulsores ( int potencia) throws Exception
+    public Propulsor ( int potencia) throws Exception
     {
         this.setPotencia( potencia );
     }

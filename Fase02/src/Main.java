@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fase02 {
+public class Main {
     public static void main (String[] args)
     {
         /* Creamos dos cohetes */
 
         String identificador1 = "32WESSDS";
         List<Integer> propulsors1 = new ArrayList<>();
+        System.out.println("Output:");
         try {
             propulsors1.add(10);
             propulsors1.add(30);
