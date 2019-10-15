@@ -8,9 +8,15 @@ public class Coets {
 
     private String identificador;
     private ArrayList<Propulsor> propulsores = new ArrayList<>();
-    private int potenciaTotal = 0;
+    private int potenciaTotal = 0; //La potencia del cohete en este momento.
     private double speed = 0;
 
+    /**
+     * Crea el Cohete.
+     * @param indetificador - 8 Caracteres entre letras y números.
+     * @param potencias - Recibe un alista con la potencia máxima de cada propulsor
+     * @throws Exception
+     */
     public Coets ( String indetificador , List<Integer> potencias) throws Exception {
         this.setIdentificador( indetificador);
         int key = 0;
@@ -26,13 +32,16 @@ public class Coets {
         return identificador;
     }
 
+    /**
+     * Establece el identificador, validandolo
+     * @param identificador
+     * @throws Exception
+     */
     public void setIdentificador(String identificador) throws Exception {
-
+        // Creamos el patron que debe tener el identificador, 8 caracteres letras o números
         String pattern = "([A-Z]|\\d){8}";
-
         // Create a Pattern object
         Pattern p = Pattern.compile(pattern);
-
         // Now create matcher object.
         Matcher m = p.matcher(identificador);
         if (m.matches( )) {
@@ -40,7 +49,6 @@ public class Coets {
         }else {
             throw ( new Exception ( "El indetificador no tiene un formato permitido. Deber tener 8 caracteres." ));
         }
-
         this.identificador = identificador;
     }
 
@@ -48,6 +56,12 @@ public class Coets {
         return propulsores;
     }
 
+    /**
+     * Creamos los propulsores y la potencia máxima
+     * @param key - un identificador, que será
+     * @param potencia - potencia máxima
+     * @throws Exception
+     */
     public void setPropulsores(int key , int potencia) throws Exception {
         if ( potencia > 0 )
         {
@@ -58,6 +72,10 @@ public class Coets {
             throw (new Exception("La potencia de los propulsores debe ser mayor que 0"));
 
     }
+
+    /**
+     * Imprimimos la información de Cohete.
+     */
     public void printInfo ()
     {
         System.out.println("Output:");
@@ -80,6 +98,11 @@ public class Coets {
         }
         System.out.println(" ");
     }
+
+    /***
+     * Calculamosla potencia máxima del cohete sumando la potencia de cada propulsor.
+     * @return
+     */
     public int calculatePotenciaMaxima ()
     {
         int potenciaMax = 0;
@@ -89,6 +112,13 @@ public class Coets {
         }
         return potenciaMax;
     }
+
+    /***
+     * Aceleramos, usando un factor de acelarión que se puede modificar para decir que tanto aceleramos
+     * @param acelerationFactor
+     * @return devuelte la pontencia despues de la acelarción.
+     * @throws Exception
+     */
     public int acelar (  int acelerationFactor ) throws Exception
     {
         if ( acelerationFactor < 0)
@@ -97,6 +127,7 @@ public class Coets {
         }
         else
         {
+
             potenciaTotal = 0;
             for ( Propulsor propulsor : propulsores )
             {
@@ -106,6 +137,12 @@ public class Coets {
         }
 
     }
+    /***
+     * Frenamos, usando un factor de acelarión que se puede modificar para decir que tanto frenamos
+     * @param acelerationFactor
+     * @return devuelte la pontencia despues de frenar.
+     * @throws Exception
+     */
     public int frenar (  int acelerationFactor )  throws Exception
     {
         if ( acelerationFactor < 0)
@@ -123,6 +160,11 @@ public class Coets {
         }
 
     }
+
+    /***
+     * Con la potencia potenciatotal del cohete calculamos la velocidad en este momento.
+     * @return
+     */
     public double calculateSpeed ()
     {
         //calculamos la velocidad

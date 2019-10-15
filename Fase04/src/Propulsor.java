@@ -12,6 +12,11 @@ public class Propulsor {
         return potenciaMaxima;
     }
 
+    /**
+     * Establecemos la potencia máxima que tendrá cada propulsor
+     * @param potencia
+     * @throws Exception
+     */
     public void setPotenciaMaxima(int potencia) throws Exception
     {
         if ( potencia > 0 )
@@ -26,6 +31,11 @@ public class Propulsor {
         return this.potenciaActual;
     }
 
+    /**
+     * Acelera el propulsor y devuelve la potencia actual de este propulsor
+     * @param factorAcelarcion
+     * @return
+     */
     public int acelerar ( int factorAcelarcion )
     {
         if ( potenciaActual + factorAcelarcion <= potenciaMaxima)
@@ -35,6 +45,12 @@ public class Propulsor {
         }
         return potenciaActual;
     }
+
+    /**
+     * Frena el propulsor y devuelve la potencia actual de este propulsor
+     * @param factorAcelarcion
+     * @return
+     */
     public int frenar (  int factorAcelarcion  )
     {
         if ( potenciaActual - factorAcelarcion >= 0)
