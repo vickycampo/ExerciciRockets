@@ -76,6 +76,7 @@ public class Coets {
     /**
      * Imprimimos la información de Cohete.
      */
+
     public void printInfo ()
     {
         System.out.println("Output:");
