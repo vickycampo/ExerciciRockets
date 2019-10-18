@@ -32,8 +32,8 @@ public class Main {
             System.out.println( cohete2.toString() );
 
             System.out.println("3.- Mostrar en pantalla la velocidad actual de los coets");
-            System.out.println("El cohete con identificador " + cohete1.getIdentificador() + " va a una velocidad de " + cohete1.calculateSpeed());
-            System.out.println("El cohete con identificador " + cohete2.getIdentificador() + " va a una velocidad de " + cohete2.calculateSpeed());
+            System.out.println("El cohete con identificador " + cohete1.getIdentificador() + " va a una velocidad de " + cohete1.getSpeed());
+            System.out.println("El cohete con identificador " + cohete2.getIdentificador() + " va a una velocidad de " + cohete2.getSpeed());
 
             System.out.println(" ");
             System.out.println("4.- Acelerar 3 veces.");
@@ -44,8 +44,8 @@ public class Main {
 
             }
             System.out.println("5.- Mostrar en pantalla la velocidad actual de los coets");
-            System.out.println("El cohete con identificador " + cohete1.getIdentificador() + " va a una velocidad de " + cohete1.calculateSpeed());
-            System.out.println("El cohete con identificador " + cohete2.getIdentificador() + " va a una velocidad de " + cohete2.calculateSpeed());
+            System.out.println("El cohete con identificador " + cohete1.getIdentificador() + " va a una velocidad de " + cohete1.getSpeed());
+            System.out.println("El cohete con identificador " + cohete2.getIdentificador() + " va a una velocidad de " + cohete2.getSpeed());
 
             System.out.println(" ");
             System.out.println("6.- Frenar cinco veces con el cohete 1 y acelerar 7 veces con el cohete 2");
@@ -58,8 +58,8 @@ public class Main {
                 cohete2.acelar(10);
             }
             System.out.println("7.- Mostrar en pantalla la velocidad actual de los coets");
-            System.out.println("El cohete con identificador " + cohete1.getIdentificador() + " va a una velocidad de " + cohete1.calculateSpeed());
-            System.out.println("El cohete con identificador " + cohete2.getIdentificador() + " va a una velocidad de " + cohete2.calculateSpeed());
+            System.out.println("El cohete con identificador " + cohete1.getIdentificador() + " va a una velocidad de " + cohete1.getSpeed());
+            System.out.println("El cohete con identificador " + cohete2.getIdentificador() + " va a una velocidad de " + cohete2.getSpeed());
 
             System.out.println(" ");
             System.out.println("8.- Acelerar 15 veces.");
@@ -69,8 +69,8 @@ public class Main {
                 cohete2.acelar( 10 );
             }
             System.out.println("9.- Mostrar en pantalla la velocidad actual de los coets");
-            System.out.println("El cohete con identificador " + cohete1.getIdentificador() + " va a una velocidad de " + cohete1.calculateSpeed());
-            System.out.println("El cohete con identificador " + cohete2.getIdentificador() + " va a una velocidad de " + cohete2.calculateSpeed());
+            System.out.println("El cohete con identificador " + cohete1.getIdentificador() + " va a una velocidad de " + cohete1.getSpeed());
+            System.out.println("El cohete con identificador " + cohete2.getIdentificador() + " va a una velocidad de " + cohete2.getSpeed());
 
 
 

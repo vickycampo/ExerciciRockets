@@ -10,8 +10,8 @@ public class Coets {
 
     private String identificador;
     private ArrayList<Propulsor> propulsores;
-    private int potenciaTotal = 0; //La potencia del cohete en este momento.
-    private double speed = 0;
+    private int potenciaActual = 0; //La potencia del cohete en este momento.
+    private double speed;
 
     public Coets ( String indetificador , List<Integer> potencias) throws Exception
     {
@@ -23,6 +23,7 @@ public class Coets {
             this.setPropulsores( key ,  i );
             key++;
         }
+        speed = 0;
 
     }
 
@@ -63,6 +64,11 @@ public class Coets {
 
     }
 
+    public double getSpeed ()
+    {
+        return speed;
+    }
+
     public int calculatePotenciaMaxima ()
     {
         int potenciaMax = 0;
@@ -73,7 +79,7 @@ public class Coets {
         return potenciaMax;
     }
 
-    public int acelar (  int acelerationFactor ) throws Exception
+    public void acelar (  int acelerationFactor ) throws Exception
     {
         if ( acelerationFactor < 0)
         {
@@ -81,18 +87,24 @@ public class Coets {
         }
         else
         {
-
-            potenciaTotal = 0;
+            int newPotencia = 0;
             for ( Propulsor propulsor : propulsores )
             {
-                potenciaTotal += propulsor.acelerar( acelerationFactor );
+                propulsor.acelerar( acelerationFactor );
+                newPotencia += propulsor.getPotenciaActual();
             }
-            return potenciaTotal;
+            if ( potenciaActual != newPotencia )
+            {
+                potenciaActual = newPotencia;
+                calculateSpeed ();
+
+            }
+
         }
 
     }
 
-    public int frenar (  int acelerationFactor )  throws Exception
+    public void frenar (  int acelerationFactor )  throws Exception
     {
         if ( acelerationFactor < 0)
         {
@@ -100,22 +112,29 @@ public class Coets {
         }
         else
         {
-            potenciaTotal = 0;
+            int newPotencia = 0;
             for ( Propulsor propulsor : propulsores )
             {
-                potenciaTotal = propulsor.frenar( acelerationFactor );
+                propulsor.frenar( acelerationFactor );
+                newPotencia += propulsor.getPotenciaActual();
             }
-            return potenciaTotal;
+            if ( potenciaActual != newPotencia )
+            {
+                potenciaActual = newPotencia;
+                calculateSpeed ();
+
+            }
         }
 
     }
 
-    public double calculateSpeed ()
+    private void calculateSpeed ()
     {
         //calculamos la velocidad
-        speed = speed + 100*Math.sqrt(potenciaTotal);
-        return speed;
+        speed = speed + 100*Math.sqrt(potenciaActual);
     }
+
+
 
     @Override
     public String toString ()
