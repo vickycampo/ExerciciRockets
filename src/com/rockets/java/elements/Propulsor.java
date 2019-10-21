@@ -45,14 +45,18 @@ public class Propulsor extends Thread
     public void acelerar ( int factorAcelarcion )
     {
         targetPower = 0;
-        if ( currentPower + factorAcelarcion <= maxPower)
+        if ( ( currentPower + factorAcelarcion >=0 ) && ( currentPower + factorAcelarcion <= maxPower) )
         {
             //como la potencia mas el incremento de acelarción es menor o igual que la potencia máxima aún podemos acelerar.
             targetPower = currentPower + factorAcelarcion;
         }
-        else
+        else if  ( currentPower + factorAcelarcion > maxPower)
         {
             targetPower = maxPower;
+        }
+        else if ( currentPower + factorAcelarcion < 0 )
+        {
+            targetPower = 0;
         }
         start ();
     }
