@@ -2,7 +2,6 @@ package com.rockets.java;
 
 import com.rockets.java.elements.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,16 +21,17 @@ public class Main {
             propulsors1.addAll( Arrays.asList(new Integer[]{10, 30, 80} ) );
             Coets cohete1 = new Coets( identificador1 , propulsors1 );
 
+            cohete1.calculateRequiredPower(10000).toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        try {
             //Creamos el cohete 2
             propulsors2.addAll( Arrays.asList(new Integer[]{ 30 , 40 , 50 , 50 , 30 , 10 } ) );
             Coets cohete2 = new Coets( identificador2 , propulsors2 );
 
-            System.out.println(cohete1.calculateRequiredPower(1000).toString());
-            System.out.println(cohete2.calculateRequiredPower(75).toString());
-
-
-
+            cohete2.calculateRequiredPower(75).toString();
         } catch (Exception e) {
             e.printStackTrace();
         }

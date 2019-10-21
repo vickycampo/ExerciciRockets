@@ -10,20 +10,26 @@ public class Coets {
 
     private String identificador;
     private ArrayList<Propulsor> propulsores;
-    private int potenciaActual = 0; //La potencia del cohete en este momento.
+    private int potenciaActual; //La potencia del cohete en este momento.
+    private int potenciaMaxima;
     private double speed;
 
     public Coets ( String indetificador , List<Integer> potencias) throws Exception
     {
         this.setIdentificador( indetificador);
+        speed = 0;
+        potenciaActual = 0;
+        potenciaMaxima = 0;
+
         int key = 0;
         propulsores = new ArrayList<>();
         for (Integer i: potencias)
         {
+            potenciaMaxima += i;
             this.setPropulsores( key ,  i );
             key++;
         }
-        speed = 0;
+
 
     }
 
@@ -98,7 +104,7 @@ public class Coets {
             if ( potenciaActual != newPotencia )
             {
                 potenciaActual = newPotencia;
-                calculateSpeed ();
+                speed = calculateSpeed( potenciaActual );
 
             }
 
@@ -183,16 +189,22 @@ public class Coets {
         }
         else if ( maxPower < requiredPower )
         {
-            throw ( new Exception("La potencia del cohete no es suficiente para alcanzar la velocidad deseada."));
+            double roquetMaxSpeed = calculateSpeed ( potenciaMaxima );
+            throw ( new Exception("La potencia del cohete no es suficiente para alcanzar la velocidad deseada. \nEste cohere no puede sobrepasar la velocidad de: " + roquetMaxSpeed));
         }
+
+        System.out.println("El cohete requiere una potencia total de " + requiredPower + " \npara llegar a la velocidad de " + targetSpeed);
+        System.out.println("Y esta distribuida dela siguiente manera: ");
+        System.out.println(thrusterPower.toString());
+
         return thrusterPower;
     }
 
-    private void calculateSpeed ()
+    private double calculateSpeed ( double potenciaTotal )
     {
         //calculamos la velocidad
         double initialSpeed = 0;
-        speed = initialSpeed + 100*Math.sqrt(potenciaActual);
+        return initialSpeed + 100*Math.sqrt(potenciaTotal);
     }
 
 
