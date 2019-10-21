@@ -54,9 +54,11 @@ public class Coets {
 
     public void setPropulsores(int key , int potencia) throws Exception
     {
+        String propulsorId;
         if ( potencia > 0 )
         {
-            Propulsor propulsor = new Propulsor(potencia);
+            propulsorId = identificador + "_" + key;
+            Propulsor propulsor = new Propulsor(propulsorId , potencia);
             this.propulsores.add( key , propulsor );
         }
         else
@@ -74,12 +76,12 @@ public class Coets {
         int potenciaMax = 0;
         for ( Propulsor propulsor : propulsores)
         {
-            potenciaMax += propulsor.getPotenciaMaxima();
+            potenciaMax += propulsor.getmaxPower();
         }
         return potenciaMax;
     }
 
-    public void acelar (  int acelerationFactor ) throws Exception
+    public void acelerar (  int acelerationFactor ) throws Exception
     {
         if ( acelerationFactor < 0)
         {
@@ -91,7 +93,7 @@ public class Coets {
             for ( Propulsor propulsor : propulsores )
             {
                 propulsor.acelerar( acelerationFactor );
-                newPotencia += propulsor.getPotenciaActual();
+                newPotencia += propulsor.getmaxPower();
             }
             if ( potenciaActual != newPotencia )
             {
@@ -116,7 +118,7 @@ public class Coets {
             for ( Propulsor propulsor : propulsores )
             {
                 propulsor.frenar( acelerationFactor );
-                newPotencia += propulsor.getPotenciaActual();
+                newPotencia += propulsor.getmaxPower();
             }
             if ( potenciaActual != newPotencia )
             {
@@ -149,7 +151,7 @@ public class Coets {
         }
         do
         {
-            stringBuilder.append ( iterator.next().getPotenciaMaxima() );
+            stringBuilder.append ( iterator.next().getmaxPower() );
             if ( iterator.hasNext() )
                 stringBuilder.append (", ");
             else
